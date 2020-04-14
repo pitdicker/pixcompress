@@ -28,6 +28,7 @@
             <prop oor:name="Title" oor:type="xs:string">
                 <value xml:lang="en">Compress images...</value>
                 <value xml:lang="fr">Compression d'images...</value>
+                <value xml:lang="nl">Comprimeer afbeeldingen...</value>
             </prop>
             <prop oor:name="Target" oor:type="xs:string">
                 <value>_self</value>

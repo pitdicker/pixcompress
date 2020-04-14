@@ -201,7 +201,7 @@ Function Taille(sNom, nHo, nLo, nHd, nLd)
 End Function
 
 Function Trans(nStr)
-    Dim english, french, german, spanish
+    Dim english, french, dutch
 
 english = array ( _
     "Warning: this operation cannot be undone. The original uncompressed images will be lost.", _
@@ -231,9 +231,24 @@ french = array ( _
     "Erreur : le document doit d'abord être sauvegardé !", _
     "Taille des images réduite : ", _
     )
+dutch = array ( _
+    "Waarschuwing: deze operatie kan niet ongedaan gemaakt worden. De originele afbeeldingen gaan verloren.", _
+    "Comprimeer:", _
+    "Alle afbeeldingen", _
+    "Geselecteerde afbeelding", _
+    "Comprimeren...", _
+    "Comprimeren van alle afbeeldingen voltooid.", _
+    "Comprimeren voltooid van de gelecteerde afbeelding: ", _
+    "Afbeeldingen aan het analyseren", _
+    "Kb", _
+    "Grootte van alle afbeeldingen: ", _
+    "Fout: dit document moet eerst worden opgeslagen.", _
+    "Grootte van de gereduceerde afbeeldingen: ", _
+    )
 
     Select Case sLang
         Case "fr" : Trans = french(nStr)
+        Case "nl" : Trans = dutch(nStr)
         Case else : Trans = english(nStr)
     End select
 End function
@@ -282,7 +297,7 @@ Function CreeBarre(sTitre as string, vMax as integer) as object
     ' Position of the dialog
     oDlgModele.PositionX = 100
     oDlgModele.PositionY = 100
-    oDlgModele.Width = 105
+    oDlgModele.Width = 120
     oDlgModele.Height = 20
     oDlgModele.Title = sTitre
 
@@ -291,7 +306,7 @@ Function CreeBarre(sTitre as string, vMax as integer) as object
     ' Position of the progress bar
     oBarre.PositionX = 0
     oBarre.PositionY = 0
-    oBarre.Width = 105
+    oBarre.Width = 120
     oBarre.Height = 20
     oBarre.ProgressValueMin = 0
     oBarre.ProgressValueMax = vMax
