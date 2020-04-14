@@ -204,18 +204,18 @@ Function Trans(nStr)
     Dim english, french, german, spanish
 
 english = array ( _
-    "Warning: the process cannot be canceled. Once did, original size for each picture will be lost.", _
-    "Compression for :", _
-    "All pictures", _
-    "Selected picture", _
-    "Compression in progress...", _
-    "Compression finished for all pictures!", _
-    "Compression finished for selected picture: ", _
-    "Analyzis pictures", _
+    "Warning: this operation cannot be undone. The original uncompressed images will be lost.", _
+    "Compress:", _
+    "All images", _
+    "Selected image", _
+    "Compressing...", _
+    "Finished compressing all images.", _
+    "Finished compressing selected image: ", _
+    "Analyzing images", _
     "Kb", _
-    "Weight total of pictures: ", _
-    "Error: this document must be saved before!", _
-    "Weight of pictures reduced: ", _
+    "Size of all images: ", _
+    "Error: this document must first be saved.", _
+    "Size of reduced images: ", _
     )
 french = array ( _
     "Attention : l'opération ne pourra être annulée. Une fois faite, la taille originale des images sera perdue.", _
