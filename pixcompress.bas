@@ -212,7 +212,7 @@ english = array ( _
     "Finished compressing all images.", _
     "Finished compressing selected image: ", _
     "Analyzing images", _
-    "Kb", _
+    " Kb", _
     "Size of all images: ", _
     "Error: this document must first be saved.", _
     "Size of reduced images: ", _
@@ -226,7 +226,7 @@ french = array ( _
     "Compression terminée pour toutes les images !", _
     "Compression terminée pour l'image sélectionnée : ", _
     "Analyse des images", _
-    "Ko", _
+    " Ko", _
     "Taille totale des images : ", _
     "Erreur : le document doit d'abord être sauvegardé !", _
     "Taille des images réduite : ", _
@@ -240,7 +240,7 @@ dutch = array ( _
     "Comprimeren van alle afbeeldingen voltooid.", _
     "Comprimeren voltooid van de gelecteerde afbeelding: ", _
     "Afbeeldingen aan het analyseren", _
-    "Kb", _
+    " Kb", _
     "Grootte van alle afbeeldingen: ", _
     "Fout: dit document moet eerst worden opgeslagen.", _
     "Grootte van de gereduceerde afbeeldingen: ", _
