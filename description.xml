@@ -3,29 +3,29 @@
  xmlns="http://openoffice.org/extensions/description/2006"
  xmlns:dep="http://openoffice.org/extensions/description/2006"
  xmlns:xlink="http://www.w3.org/1999/xlink">
-	<identifier value="vnd.beaussier.pixcompress"/>
-	<version value="1.4.1"/>
-	<dependencies>
-		<OpenOffice.org-minimal-version value="4.1" dep:name="OpenOffice.org 4.1"/> 
-		<OpenOffice.org-maximal-version value="4.9" dep:name="OpenOffice.org 4.9"/>
-	</dependencies>
-  
+    <identifier value="vnd.beaussier.pixcompress"/>
+    <version value="1.4.1"/>
+    <dependencies>
+        <OpenOffice.org-minimal-version value="4.1" dep:name="OpenOffice.org 4.1"/>
+        <OpenOffice.org-maximal-version value="4.9" dep:name="OpenOffice.org 4.9"/>
+    </dependencies>
+
   <display-name>
-		<name>PixCompress</name>
-	</display-name>
+        <name>PixCompress</name>
+    </display-name>
 
   <publisher>
       <name xlink:href="http://www.beaussier.com/" lang="en">Beaussier.com</name>
   </publisher>
-    
+
   <icon>
     <default xlink:href="logo.png" />
   </icon>
-      
-	<registration>
-		<simple-license  accept-by="admin" default-license-id="ID0" suppress-on-update="true" >
-			<license-text xlink:href="registration/Licence_CeCILL_V2-en.txt" lang="en" license-id="ID0" />
-			<license-text xlink:href="registration/Licence_CeCILL_V2-fr.txt" lang="fr-FR" />
-		</simple-license>
-	</registration>
+
+    <registration>
+        <simple-license  accept-by="admin" default-license-id="ID0" suppress-on-update="true" >
+            <license-text xlink:href="registration/Licence_CeCILL_V2-en.txt" lang="en" license-id="ID0" />
+            <license-text xlink:href="registration/Licence_CeCILL_V2-fr.txt" lang="fr-FR" />
+        </simple-license>
+    </registration>
 </description>
