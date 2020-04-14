@@ -122,7 +122,7 @@ Sub CompresseImage
         oWait.setVisible( true )
         For Each oImg in oImages
             oWait.Controls(0).Model.ProgressValue = i
-            Call CopieColle(oImg)
+            Call CopyPaste(oImg)
             i = i+1
         Next
         oWait.dispose()
@@ -134,7 +134,7 @@ Sub CompresseImage
             oImg  = oImages(i)
             If  oImg.name = uneImg then exit for
         Next i
-        Call CopieColle(oImg)
+        Call CopyPaste(oImg)
         sMsg = Trans(6) & oImg.name
     End if
     oDoc.store()
@@ -151,7 +151,7 @@ Sub CompresseImage
     msgbox sMsg, 64, "PixCompress"
 End Sub
 
-Sub CopieColle (oImg)
+Sub CopyPaste (oImg)
     oPage = oDoc.CurrentController.Frame
     oDisp = createUnoService("com.sun.star.frame.DispatchHelper")
     oCopie = oDoc.createInstance("com.sun.star.drawing.GraphicObjectShape")
