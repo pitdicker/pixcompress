@@ -36,17 +36,17 @@ Sub Main
     oBibli = DialogLibraries.GetByName("PixCompress")
     oDialog = oBibli.GetByName("Dialogue")
     oDlg = CreateUnoDialog(oDialog)
-    ' Paramétrage langue
+    ' Language setting
     sLang = "en"
     oLocal = GetStarOfficeLocale()
     sLang = Left(oLocal.Language, 2)
-    ' Traduction dialogue
+    ' Dialog translation
     oDlg.Controls(0).Model.Label = Trans(2)
     oDlg.Controls(1).Model.Label = Trans(3)
     oDlg.Controls(3).Model.Label = Trans(1)
     oDlg.Controls(4).Model.Label = Trans(0)
 
-    ' Test si le document a été sauvegardé
+    ' Test if the document has been saved
     If oDoc.isModified() or oDoc.URL = "" then
         msgBox Trans(10)
         exit Sub
@@ -60,7 +60,7 @@ Sub Main
     nbImg = oImages.Count -1
     oWait = CreeBarre(Trans(7), nbImg)
     oCurs = oDoc.CurrentController.ViewCursor
-    nPage = oCurs.Page   'Mémorise la page courante
+    nPage = oCurs.Page   ' Remember the current page
 
 
     listeImg = oDlg.GetControl("listeImg")
@@ -85,18 +85,18 @@ Sub Main
          i = i + 1
       End If
     Next
-    ' Affichage du poids total
+    ' Display total file sizes
     nPoids = tPoids / 1000
     sPoids = Format(nPoids, "##,##0.00")
     oDlg.Controls(5).Model.Label = Trans(9) & sPoids & Trans(8)
 
-    ' Y-a t-il une image sélectionnée ?
+    ' Is there an image selected?
     If oQuoi.ImplementationName = "SwXTextGraphicObject" or _
         oQuoi.ImplementationName = "SwXShape" then
         uneImg = oQuoi.name
         bImage = true
     Else
-    ' On liste toutes les images
+    ' List all the images
         bCompressOne = oDlg.GetControl("bCompressOne")
         bCompressOne.enable = false
     End if
@@ -117,7 +117,7 @@ Sub CompresseImage
     oImages = oDoc.getDrawPage()
 
     If not bImage then
-    'On fait toutes les images
+    ' Make all the images
         oWait = CreeBarre(Trans(4), nbImg)
         oWait.setVisible( true )
         For Each oImg in oImages
@@ -127,9 +127,9 @@ Sub CompresseImage
         Next
         oWait.dispose()
         sMsg = Trans(5)
-        oCurs.JumpToPage(nPage) 'Replace le curseur à sa position initiale
+        oCurs.JumpToPage(nPage) ' Return the cursor to its initial position
     Else
-    ' On ne fait que l'image sélectionnée
+    ' We only do the selected image
         For i = 0 To oImages.Count - 1
             oImg  = oImages(i)
             If  oImg.name = uneImg then exit for
@@ -138,7 +138,7 @@ Sub CompresseImage
         sMsg = Trans(6) & oImg.name
     End if
     oDoc.store()
-    ' Recalcul du poids des images
+    ' Recalculate the size of the images
     sMsg = sMsg & chr(10) & Trans(11)
     sMsg = sMsg & Format(( tPoids / 1000 ), "##,##0.00") & Trans(8) & " > "
     tPoids = 0
@@ -146,7 +146,7 @@ Sub CompresseImage
         sPoids = Poids(i)
     Next i
     sMsg = sMsg & Format(( tPoids / 1000 ), "##,##0.00") & Trans(8)
-    ' Fermeture du dialogue et résultat
+    ' Close the results dialog
     oDlg.EndExecute
     msgbox sMsg, 64, "PixCompress"
 End Sub
@@ -276,29 +276,29 @@ Function Poids(nIndex)
 End function
 
 Function CreeBarre(sTitre as string, vMax as integer) as object
-    ' Création du modèle
+    ' Create the model
     oDlgModele = createUnoService( "com.sun.star.awt.UnoControlDialogModel")
 
-    ' Où mettre le dialogue
+    ' Position of the dialog
     oDlgModele.PositionX = 100
     oDlgModele.PositionY = 100
     oDlgModele.Width = 105
     oDlgModele.Height = 20
     oDlgModele.Title = sTitre
 
-    ' Création du contrôle barre de progression
+    ' Create the progress bar control
     oBarre = oDlgModele.createInstance( "com.sun.star.awt.UnoControlProgressBarModel" )
-    ' Où mettre la barre
+    ' Position of the progress bar
     oBarre.PositionX = 0
     oBarre.PositionY = 0
     oBarre.Width = 105
     oBarre.Height = 20
     oBarre.ProgressValueMin = 0
     oBarre.ProgressValueMax = vMax
-    ' Mettre la barre dans le modèle
+    ' Put the bar into the model
     oDlgModele.insertByName("bar", oBarre )
 
-    ' Création du dialogue sur la base du modèle
+    ' Create a dialog from this model
     oWait = createUnoService( "com.sun.star.awt.UnoControlDialog")
     oWait.setModel( oDlgModele )
 
