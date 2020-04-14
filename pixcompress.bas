@@ -77,7 +77,7 @@ Sub Main
             nHd = .Size.Height
             nLd = .Size.Width
             sExt = Split(.Graphic.MimeType, "/")
-            sImg = Right(.GraphicUrl,32)
+            sImg = .Graphic
             sSize = GetSize(i)
             sListe = .Name & " (" & sExt(1)  & ") " & sSize & Trans(8)
          End With
@@ -174,7 +174,7 @@ Sub CopyPaste (oImg)
         oTaille.Height = nHo
         oTaille.Width = nLo
 
-        oCopie.GraphicUrl = oImg.GraphicUrl
+        oCopie.Graphic = oImg.Graphic
         oCopie.name = "_transfert_"
         oCopie.setSize( oTaille )
         oDoc.DrawPage.add(oCopie)
