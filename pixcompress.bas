@@ -16,7 +16,7 @@ Private nPage as integer
 Private bImage as boolean
 Private uneImg as string
 Private sLang as string
-Private tPoids as double
+Private tSize as double
 Private nbImg as integer
 
 Sub Main
@@ -25,8 +25,8 @@ Sub Main
     Dim oWait, oDlgModele, oBarre, oLocal As Object
     Dim sListe as string
     Dim sExt(1)
-    Dim sImg, sPoids as string
-    Dim nPoids as double
+    Dim sImg, sSize as string
+    Dim nSize as double
     Dim nHo, nLo, nHd, nLd, i as long
 
     oDoc = ThisComponent
@@ -54,7 +54,7 @@ Sub Main
 
     bImage = false
     i = 0
-    tPoids = 0
+    tSize = 0
     oQuoi = oDoc.getCurrentSelection
     oImages = oDoc.getDrawPage()
     nbImg = oImages.Count -1
@@ -78,17 +78,17 @@ Sub Main
             nLd = .Size.Width
             sExt = Split(.Graphic.MimeType, "/")
             sImg = Right(.GraphicUrl,32)
-            sPoids = Poids(i)
-            sListe = .Name & " (" & sExt(1)  & ") " & sPoids & Trans(8)
+            sSize = GetSize(i)
+            sListe = .Name & " (" & sExt(1)  & ") " & sSize & Trans(8)
          End With
          listeImg.addItem (sListe, i)
          i = i + 1
       End If
     Next
     ' Display total file sizes
-    nPoids = tPoids / 1000
-    sPoids = Format(nPoids, "##,##0.00")
-    oDlg.Controls(5).Model.Label = Trans(9) & sPoids & Trans(8)
+    nSize = tSize / 1000
+    sSize = Format(nSize, "##,##0.00")
+    oDlg.Controls(5).Model.Label = Trans(9) & sSize & Trans(8)
 
     ' Is there an image selected?
     If oQuoi.ImplementationName = "SwXTextGraphicObject" or _
@@ -140,12 +140,12 @@ Sub CompresseImage
     oDoc.store()
     ' Recalculate the size of the images
     sMsg = sMsg & chr(10) & Trans(11)
-    sMsg = sMsg & Format(( tPoids / 1000 ), "##,##0.00") & Trans(8) & " > "
-    tPoids = 0
+    sMsg = sMsg & Format(( tSize / 1000 ), "##,##0.00") & Trans(8) & " > "
+    tSize = 0
     For i = 0 to nbImg
-        sPoids = Poids(i)
+        sSize = GetSize(i)
     Next i
-    sMsg = sMsg & Format(( tPoids / 1000 ), "##,##0.00") & Trans(8)
+    sMsg = sMsg & Format(( tSize / 1000 ), "##,##0.00") & Trans(8)
     ' Close the results dialog
     oDlg.EndExecute
     msgbox sMsg, 64, "PixCompress"
@@ -254,12 +254,12 @@ dutch = array ( _
 End function
 
 
-Function Poids(nIndex)
+Function GetSize(nIndex)
     Dim sRet, sUrl As string
     Dim args(1) As Variant
     Dim oZip As object, oImages As Object
     Dim oFlux As object, oImage As Object
-    Dim nPoids as double
+    Dim nSize as double
     Dim PropZ As New com.sun.star.beans.NamedValue
 
     sUrl = ThisComponent.URL
@@ -277,17 +277,17 @@ Function Poids(nIndex)
             If i = nIndex Then
                 oImage = oZip.getByHierarchicalName(sRep &"/"& oImages(i))
                 oFlux = oImage.getInputStream()
-                nPoids = oFlux.available()
-                tPoids = tPoids + nPoids
-                nPoids = nPoids / 1000
-                sRet = Format(nPoids, "##,##0.00")
+                nSize = oFlux.available()
+                tSize = tSize + nSize
+                nSize = nSize / 1000
+                sRet = Format(nSize, "##,##0.00")
                 oFlux.closeInput
             Endif
         Next i
     else
         sRet = "Error"
     endif
-    Poids = sRet
+    GetSize = sRet
 End function
 
 Function CreeBarre(sTitre as string, vMax as integer) as object

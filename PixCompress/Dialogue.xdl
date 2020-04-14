@@ -14,6 +14,6 @@
   <dlg:menulist dlg:id="listeImg" dlg:tab-index="0" dlg:left="3" dlg:top="4" dlg:width="149" dlg:height="125"/>
   <dlg:text dlg:id="txtCompress" dlg:tab-index="4" dlg:left="157" dlg:top="58" dlg:width="72" dlg:height="12" dlg:value="txtCompress"/>
   <dlg:text dlg:style-id="0" dlg:id="txtWarn" dlg:tab-index="3" dlg:left="157" dlg:top="5" dlg:width="71" dlg:height="49" dlg:value="txtWarn" dlg:multiline="true"/>
-  <dlg:text dlg:id="txtPoids" dlg:tab-index="5" dlg:left="5" dlg:top="134" dlg:width="147" dlg:height="10" dlg:value="txtPoids"/>
+  <dlg:text dlg:id="txtSize" dlg:tab-index="5" dlg:left="5" dlg:top="134" dlg:width="147" dlg:height="10" dlg:value="txtSize"/>
  </dlg:bulletinboard>
 </dlg:window>
