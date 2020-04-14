@@ -1,0 +1,5 @@
+Copyright (c) 2012-2016 by Bidouille
+
+Pictures can dramatically increase the file size of your document.
+To save room on your hard disk drive, reduce download times and prevent crash risk, you can reduce image resolution.
+With PixCompress, you can apply compression with no loss of quality.
